@@ -7,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -20,20 +19,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-public class Client {
+public class Location {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="id")
-	private int id;
+	private Integer id;
 	
-	private String name;
-	private String address;
-	private String city;
-	private String phone;
-	private String mobile;
-	private String website;
-	private String email;
+	private String description;
+	private String details;
 	
 	@ManyToOne
 	@JoinColumn(name="countryid", insertable=false, updatable=false)
@@ -44,6 +38,7 @@ public class Client {
 	@JoinColumn(name="stateid", insertable=false, updatable=false)
 	private State state;	
 	private Integer stateid;
-	
-	private String details;
+		
+	private String city;
+	private String address;			
 }
